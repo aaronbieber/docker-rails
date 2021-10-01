@@ -6,6 +6,7 @@ gid := $(shell id -g)
 build:
 	mv -v Gemfile.sample Gemfile && \
 	mv -v Gemfile.lock.sample Gemfile.lock && \
+	chmod a+w * && \
 	docker-compose build \
                        --build-arg UID=${uid} \
                        --build-arg GID=${gid} && \
