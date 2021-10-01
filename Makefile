@@ -12,3 +12,7 @@ build:
                        --build-arg GID=${gid} && \
 	docker-compose run --no-deps web rails new . --force --database=postgresql && \
 	cp -v database.yml.sample config/
+
+clean:
+	docker container ls -aq | xargs docker container rm && \
+	docker image ls -aq | xargs docker image rm
