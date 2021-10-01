@@ -13,6 +13,8 @@ build:
 	docker-compose run --no-deps web rails new . --force --database=postgresql && \
 	cp -v database.yml.sample config/
 
+# todo: this is super destructive; it deletes ALL images/containers on the system!
+#       probably make it not do that
 clean:
 	docker container ls -aq | xargs docker container rm && \
 	docker image ls -aq | xargs docker image rm
