@@ -11,7 +11,13 @@ build:
                        --build-arg UID=${uid} \
                        --build-arg GID=${gid} && \
 	docker-compose run --no-deps web rails new . --force --database=postgresql && \
-	cp -v database.yml.sample config/
+	docker-compose build \
+                       --build-arg UID=${uid} \
+                       --build-arg GID=${gid} && \
+	cp -v database.yml.sample config/database.yml
+
+createdb:
+	docker-compose run web rake 'db:create'
 
 # todo: this is super destructive; it deletes ALL images/containers on the system!
 #       probably make it not do that
