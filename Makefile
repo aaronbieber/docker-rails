@@ -11,4 +11,4 @@ build:
                        --build-arg UID=${uid} \
                        --build-arg GID=${gid} && \
 	docker-compose run --no-deps web rails new . --force --database=postgresql && \
-	mv -v database.yml.sample database/
+	mv -v database.yml.sample config/
